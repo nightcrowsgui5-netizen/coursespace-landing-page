@@ -12,6 +12,7 @@ import IconArrowForward from '@mui/icons-material/ArrowForward'
 
 import { TestimonialItem } from '@/components/testimonial'
 import { data } from './testimonial.data'
+import { useLanguage } from '@/i18n'
 
 interface SliderArrowArrow {
   onClick?: () => void
@@ -51,6 +52,18 @@ const StyledSlickContainer = styled('div')(() => ({
 
 const HomeTestimonial: FC = () => {
   const sliderRef = useRef(null)
+  const { t } = useLanguage()
+
+  // Mantém foto/nome dos dados e traduz título/conteúdo/profissão pelo índice
+  const testimonials = data.map((item, index) => ({
+    ...item,
+    title: t.testimonialSection.list[index]?.title ?? item.title,
+    content: t.testimonialSection.list[index]?.content ?? item.content,
+    user: {
+      ...item.user,
+      professional: t.testimonialSection.list[index]?.professional ?? item.user.professional,
+    },
+  }))
 
   const sliderConfig: Settings = {
     infinite: true,
@@ -78,7 +91,7 @@ const HomeTestimonial: FC = () => {
                 fontWeight: 'bold',
               }}
             >
-              Testimonial What our{' '}
+              {t.testimonialSection.pre}{' '}
               <Typography
                 component="mark"
                 sx={{
@@ -89,7 +102,7 @@ const HomeTestimonial: FC = () => {
                   backgroundColor: 'unset',
                 }}
               >
-                Students{' '}
+                {t.testimonialSection.highlight}{' '}
                 <Box
                   sx={{
                     position: 'absolute',
@@ -102,12 +115,12 @@ const HomeTestimonial: FC = () => {
                   <img src="/images/headline-curve.svg" alt="Headline curve" />
                 </Box>
               </Typography>
-              Say
+              {t.testimonialSection.post}
             </Typography>
 
             <StyledSlickContainer>
               <Slider ref={sliderRef} {...sliderConfig}>
-                {data.map((item, index) => (
+                {testimonials.map((item, index) => (
                   <TestimonialItem key={String(index)} item={item} />
                 ))}
               </Slider>

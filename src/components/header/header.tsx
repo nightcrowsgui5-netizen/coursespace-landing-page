@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Logo } from '@/components/logo'
 import { Navigation, AuthNavigation } from '@/components/navigation'
+import { LanguageSwitcher } from '@/components/language-switcher'
 import { useTheme } from '@mui/material/styles'
 import { Menu, Close } from '@mui/icons-material'
 
@@ -45,7 +46,16 @@ const Header: FC = () => {
           >
             <Box /> {/* Magic space */}
             <Navigation />
-            <AuthNavigation />
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: { xs: 'column', md: 'row' },
+              }}
+            >
+              <LanguageSwitcher />
+              <AuthNavigation />
+            </Box>
             {visibleMenu && matchMobileView && (
               <IconButton
                 sx={{

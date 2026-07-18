@@ -6,12 +6,14 @@ import Typography from '@mui/material/Typography'
 import IconButton, { iconButtonClasses } from '@mui/material/IconButton'
 import ArrowForward from '@mui/icons-material/ArrowForward'
 import { Course } from '@/interfaces/course'
+import { useLanguage } from '@/i18n'
 
 interface Props {
   item: Course
 }
 
 const CourseCardItem: FC<Props> = ({ item }) => {
+  const { t } = useLanguage()
   return (
     <Box
       sx={{
@@ -61,7 +63,7 @@ const CourseCardItem: FC<Props> = ({ item }) => {
             <Typography variant="h5" color="primary.main">
               {'$' + item.price}
             </Typography>
-            <Typography variant="h6">/ course</Typography>
+            <Typography variant="h6">{t.popularCourses.perCourse}</Typography>
           </Box>
           <IconButton
             color="primary"

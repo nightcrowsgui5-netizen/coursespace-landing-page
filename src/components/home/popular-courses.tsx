@@ -11,6 +11,7 @@ import IconArrowForward from '@mui/icons-material/ArrowForward'
 
 import { data } from './popular-course.data'
 import { CourseCardItem } from '@/components/course'
+import { useLanguage } from '@/i18n'
 
 interface SliderArrowArrow {
   onClick?: () => void
@@ -61,6 +62,14 @@ const StyledDots = styled('ul')(({ theme }) => ({
 const HomePopularCourse: FC = () => {
   const { breakpoints } = useTheme()
   const matchMobileView = useMediaQuery(breakpoints.down('md'))
+  const { t } = useLanguage()
+
+  // Mantém imagem/preço/avaliação dos dados e traduz título/categoria pelo índice
+  const courses = data.map((item, index) => ({
+    ...item,
+    title: t.popularCourses.courses[index]?.title ?? item.title,
+    category: t.popularCourses.courses[index]?.category ?? item.category,
+  }))
 
   const sliderConfig: Settings = {
     infinite: true,
@@ -102,14 +111,14 @@ const HomePopularCourse: FC = () => {
               }}
             >
               <Typography variant="h1" sx={{ mt: { xs: 0, md: -5 }, fontSize: { xs: 30, md: 48 } }}>
-                Most Popular Courses
+                {t.popularCourses.title}
               </Typography>
             </Box>
           </Grid>
 
           <Grid item xs={12} md={9}>
             <Slider {...sliderConfig}>
-              {data.map((item) => (
+              {courses.map((item) => (
                 <CourseCardItem key={String(item.id)} item={item} />
               ))}
             </Slider>

@@ -15,7 +15,7 @@ interface DocumentProps {
 class MyDocument extends Document<DocumentProps> {
   render(): any {
     return (
-      <Html lang="en">
+      <Html lang="pt-BR">
         <Head>
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />

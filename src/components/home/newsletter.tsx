@@ -4,8 +4,10 @@ import InputBase from '@mui/material/InputBase'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { StyledButton } from '../styled-button'
+import { useLanguage } from '@/i18n'
 
 const HomeNewsLetter: FC = () => {
+  const { t } = useLanguage()
   return (
     <Box sx={{ backgroundColor: 'background.paper', py: { xs: 8, md: 10 } }}>
       <Container>
@@ -19,9 +21,9 @@ const HomeNewsLetter: FC = () => {
           }}
         >
           <Typography variant="h1" component="h2" sx={{ mb: 1, fontSize: { xs: 32, md: 42 } }}>
-            Subscribe to Our News Letter
+            {t.newsletter.title}
           </Typography>
-          <Typography sx={{ mb: 6 }}>Subscribe to our newsletter to get information about our courses.</Typography>
+          <Typography sx={{ mb: 6 }}>{t.newsletter.subtitle}</Typography>
 
           <Box
             sx={{
@@ -43,11 +45,11 @@ const HomeNewsLetter: FC = () => {
                 mr: { xs: 0, md: 3 },
                 mb: { xs: 2, md: 0 },
               }}
-              placeholder="Enter your Email Address"
+              placeholder={t.newsletter.placeholder}
             />
             <Box>
               <StyledButton disableHoverEffect size="large">
-                Subscribe
+                {t.newsletter.button}
               </StyledButton>
             </Box>
           </Box>

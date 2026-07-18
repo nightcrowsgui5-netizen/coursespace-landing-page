@@ -10,6 +10,7 @@ import IconArrowBack from '@mui/icons-material/ArrowBack'
 import IconArrowForward from '@mui/icons-material/ArrowForward'
 import { MentorCardItem } from '@/components/mentor'
 import { data } from './mentors.data'
+import { useLanguage } from '@/i18n'
 
 interface SliderArrowArrow {
   onClick?: () => void
@@ -60,6 +61,14 @@ const StyledDots = styled('ul')(({ theme }) => ({
 const HomeOurMentors: FC = () => {
   const { breakpoints } = useTheme()
   const matchMobileView = useMediaQuery(breakpoints.down('md'))
+  const { t } = useLanguage()
+
+  // Mantém foto/empresa/nome dos dados e traduz categoria/descrição pelo índice
+  const mentors = data.map((item, index) => ({
+    ...item,
+    category: t.mentors.list[index]?.category ?? item.category,
+    description: t.mentors.list[index]?.description ?? item.description,
+  }))
 
   const sliderConfig: Settings = {
     infinite: true,
@@ -93,11 +102,11 @@ const HomeOurMentors: FC = () => {
     >
       <Container maxWidth="lg">
         <Typography variant="h1" sx={{ fontSize: 40 }}>
-          Our Expert Mentors
+          {t.mentors.title}
         </Typography>
 
         <Slider {...sliderConfig}>
-          {data.map((item) => (
+          {mentors.map((item) => (
             <MentorCardItem key={String(item.id)} item={item} />
           ))}
         </Slider>

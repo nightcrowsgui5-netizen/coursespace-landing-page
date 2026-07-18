@@ -1,20 +1,20 @@
-import type { Navigation } from '@/interfaces/navigation'
+import type { NavItem } from '@/interfaces/navigation'
 
-export const navigations: Navigation[] = [
+export const navigations: NavItem[] = [
   {
-    label: 'Home',
+    key: 'home',
     path: '#', // '/',
   },
   {
-    label: 'Courses',
+    key: 'courses',
     path: 'popular-course', // '/popular-course',
   },
   {
-    label: 'Testimonial',
+    key: 'testimonial',
     path: 'testimonial', // '/testimonial',
   },
   {
-    label: 'Mentor',
+    key: 'mentor',
     path: 'mentors', // '/mentors',
   },
 ]
