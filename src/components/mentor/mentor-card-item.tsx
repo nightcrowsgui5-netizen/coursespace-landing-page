@@ -35,22 +35,26 @@ const MentorCardItem: FC<Props> = ({ item }) => {
             borderRadius: 3,
             height: 200,
             mb: 2,
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Image src={item.photo as string} width={570} height={427} alt={'Mentor ' + item.id} />
         </Box>
-        <Box sx={{ mb: 2 }}>
+        <Box sx={{ mb: 2, textAlign: 'center' }}>
           <Typography component="h2" variant="h4" sx={{ fontSize: '1.4rem' }}>
             {item.name}
           </Typography>
           <Typography sx={{ mb: 2, color: 'text.secondary' }}>{item.category}</Typography>
-          <Typography sx={{ mb: 2, color: 'text.secondary' }} variant="subtitle1">
+          <Typography sx={{ color: 'text.secondary' }} variant="subtitle1">
             {item.description}
           </Typography>
-          <Box sx={{ '& img': { height: 26 } }}>
-            {/* eslint-disable-next-line */}
-            <img src={item.company?.logo} alt={item.company?.name + ' logo'} />
-          </Box>
+          {item.company?.logo && (
+            <Box sx={{ mt: 2, '& img': { height: 26 } }}>
+              {/* eslint-disable-next-line */}
+              <img src={item.company.logo} alt={item.company.name + ' logo'} />
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>

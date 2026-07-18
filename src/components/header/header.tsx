@@ -4,7 +4,7 @@ import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Logo } from '@/components/logo'
-import { Navigation, AuthNavigation } from '@/components/navigation'
+import { Navigation } from '@/components/navigation'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { useTheme } from '@mui/material/styles'
 import { Menu, Close } from '@mui/icons-material'
@@ -54,7 +54,6 @@ const Header: FC = () => {
               }}
             >
               <LanguageSwitcher />
-              <AuthNavigation />
             </Box>
             {visibleMenu && matchMobileView && (
               <IconButton

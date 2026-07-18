@@ -1,88 +1,19 @@
 import React, { FC } from 'react'
 import Box from '@mui/material/Box'
-import Slider, { Settings } from 'react-slick'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { useTheme, styled } from '@mui/material/styles'
-import IconArrowBack from '@mui/icons-material/ArrowBack'
-import IconArrowForward from '@mui/icons-material/ArrowForward'
 import { MentorCardItem } from '@/components/mentor'
 import { data } from './mentors.data'
 import { useLanguage } from '@/i18n'
 
-interface SliderArrowArrow {
-  onClick?: () => void
-  type: 'next' | 'prev'
-  className?: 'string'
-}
-
-const SliderArrow: FC<SliderArrowArrow> = (props) => {
-  const { onClick, type, className } = props
-  return (
-    <IconButton
-      sx={{
-        backgroundColor: 'background.paper',
-        color: 'primary.main',
-        '&:hover': { backgroundColor: 'primary.main', color: 'primary.contrastText' },
-        bottom: '-28px !important',
-        left: 'unset !important',
-        right: type === 'prev' ? '60px !important' : '0 !important',
-        zIndex: 10,
-        boxShadow: 1,
-      }}
-      disableRipple
-      color="inherit"
-      onClick={onClick}
-      className={className}
-    >
-      {type === 'next' ? <IconArrowForward sx={{ fontSize: 22 }} /> : <IconArrowBack sx={{ fontSize: 22 }} />}
-    </IconButton>
-  )
-}
-
-const StyledDots = styled('ul')(({ theme }) => ({
-  '&.slick-dots': {
-    position: 'absolute',
-    left: 0,
-    bottom: -20,
-    paddingLeft: theme.spacing(1),
-    textAlign: 'left',
-    '& li': {
-      marginRight: theme.spacing(2),
-      '&.slick-active>div': {
-        backgroundColor: theme.palette.primary.main,
-      },
-    },
-  },
-}))
-
 const HomeOurMentors: FC = () => {
-  const { breakpoints } = useTheme()
-  const matchMobileView = useMediaQuery(breakpoints.down('md'))
   const { t } = useLanguage()
 
-  // Mantém foto/empresa/nome dos dados e traduz categoria/descrição pelo índice
-  const mentors = data.map((item, index) => ({
-    ...item,
-    category: t.mentors.list[index]?.category ?? item.category,
-    description: t.mentors.list[index]?.description ?? item.description,
-  }))
-
-  const sliderConfig: Settings = {
-    infinite: true,
-    // autoplay: true,
-    speed: 300,
-    slidesToShow: matchMobileView ? 1 : 3,
-    slidesToScroll: 1,
-    prevArrow: <SliderArrow type="prev" />,
-    nextArrow: <SliderArrow type="next" />,
-    dots: true,
-    appendDots: (dots) => <StyledDots>{dots}</StyledDots>,
-    customPaging: () => (
-      <Box sx={{ height: 8, width: 30, backgroundColor: 'divider', display: 'inline-block', borderRadius: 4 }} />
-    ),
+  // Foto/nome dos dados + categoria/descrição traduzidas (perfil único do professor)
+  const mentor = {
+    ...data[0],
+    category: t.mentors.list[0]?.category ?? data[0].category,
+    description: t.mentors.list[0]?.description ?? data[0].description,
   }
 
   return (
@@ -101,15 +32,13 @@ const HomeOurMentors: FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h1" sx={{ fontSize: 40 }}>
+        <Typography variant="h1" sx={{ fontSize: 40, textAlign: 'center' }}>
           {t.mentors.title}
         </Typography>
 
-        <Slider {...sliderConfig}>
-          {mentors.map((item) => (
-            <MentorCardItem key={String(item.id)} item={item} />
-          ))}
-        </Slider>
+        <Box sx={{ width: { xs: '100%', sm: 380 }, mx: 'auto' }}>
+          <MentorCardItem item={mentor} />
+        </Box>
       </Container>
     </Box>
   )

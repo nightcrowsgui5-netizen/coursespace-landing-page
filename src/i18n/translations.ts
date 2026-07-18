@@ -123,22 +123,19 @@ const pt: Translation = {
     title: 'Cursos Mais Populares',
     perCourse: '/ curso',
     courses: [
-      { title: 'Desenvolvimento Android do Zero ao Avançado', category: 'Iniciante' },
-      { title: 'Guia Completo de UI/UX', category: 'Intermediário' },
-      { title: 'Fundamentos de Modelagem de Dados', category: 'Iniciante' },
-      { title: 'Guia Completo de Docker e Kubernetes', category: 'Intermediário' },
-      { title: 'React Moderno com MUI e Redux', category: 'Intermediário' },
-      { title: 'Bootcamp de Hacking Ético do Zero à Maestria', category: 'Iniciante' },
-      { title: 'Adobe Lightroom para Iniciantes: Edição de Fotos', category: 'Iniciante' },
+      { title: 'TR-069', category: 'Redes' },
+      { title: 'BGP', category: 'Redes' },
+      { title: 'Informática para Concursos', category: 'Concursos' },
     ],
   },
   mentors: {
-    title: 'Nossos Mentores Especialistas',
+    title: 'Sobre o Professor',
     list: [
-      { category: 'UI/UX Design', description: 'Especialista em design de interfaces e experiência do usuário, com anos de prática em produtos digitais.' },
-      { category: 'Machine Learning', description: 'Atua com inteligência artificial e aprendizado de máquina em projetos de grande escala.' },
-      { category: 'Desenvolvimento Android', description: 'Desenvolvedor mobile focado em aplicativos Android de alta performance.' },
-      { category: 'Desenvolvimento Fullstack', description: 'Domina o desenvolvimento completo, do front-end ao back-end de aplicações web.' },
+      {
+        category: 'Especialista em Redes',
+        description:
+          'Especialista em redes, com ampla experiência em TR-069, BGP e infraestrutura de provedores. Ensina de forma prática e direta ao ponto.',
+      },
     ],
   },
   testimonialSection: {
@@ -213,22 +210,19 @@ const en: Translation = {
     title: 'Most Popular Courses',
     perCourse: '/ course',
     courses: [
-      { title: 'Android Development from Zero to Hero', category: 'Beginner' },
-      { title: 'UI/UX Complete Guide', category: 'Intermediate' },
-      { title: 'Mastering Data Modeling Fundamentals', category: 'Beginner' },
-      { title: 'The Complete Guide Docker and Kubernetes', category: 'Intermediate' },
-      { title: 'Modern React with MUI & Redux', category: 'Intermediate' },
-      { title: 'Ethical Hacking Bootcamp Zero to Mastery', category: 'Beginner' },
-      { title: 'Adobe Lightroom For Beginners: Complete Photo Editing', category: 'Beginner' },
+      { title: 'TR-069', category: 'Networking' },
+      { title: 'BGP', category: 'Networking' },
+      { title: 'IT for Public Exams', category: 'Public Exams' },
     ],
   },
   mentors: {
-    title: 'Our Expert Mentors',
+    title: 'About the Teacher',
     list: [
-      { category: 'UI/UX Design', description: 'Specialist in interface design and user experience, with years of practice on digital products.' },
-      { category: 'Machine Learning', description: 'Works with artificial intelligence and machine learning on large-scale projects.' },
-      { category: 'Android Development', description: 'Mobile developer focused on high-performance Android applications.' },
-      { category: 'Fullstack Development', description: 'Masters end-to-end development, from front-end to back-end of web applications.' },
+      {
+        category: 'Networking Specialist',
+        description:
+          'Networking specialist with broad experience in TR-069, BGP and ISP infrastructure. Teaches in a practical, straight-to-the-point way.',
+      },
     ],
   },
   testimonialSection: {
