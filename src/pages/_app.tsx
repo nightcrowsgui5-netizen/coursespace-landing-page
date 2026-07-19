@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import { CssBaseline } from '@mui/material'
 import { EmotionCache } from '@emotion/cache'
@@ -7,6 +6,7 @@ import { CacheProvider } from '@emotion/react'
 import { createEmotionCache } from '@/utils'
 import { MUIProvider } from '@/providers'
 import { LanguageProvider } from '@/i18n'
+import { Seo } from '@/components/seo'
 import 'slick-carousel/slick/slick.css'
 import '@/styles/globals.css'
 import '@/styles/react-slick.css'
@@ -29,10 +29,7 @@ const App: FC<AppPropsWithLayout> = (props: AppPropsWithLayout) => {
 
   return (
     <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <title>MauroAlexandre</title>
-      </Head>
+      <Seo />
       <LanguageProvider>
         <MUIProvider>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
