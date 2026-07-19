@@ -1,7 +1,6 @@
 // Configuração central de SEO.
-// Troque `siteUrl` quando tiver um domínio próprio (ex.: https://mauroalexandre.com.br).
 export const seo = {
-  siteUrl: 'https://coursespace-landing-page-beryl.vercel.app',
+  siteUrl: 'https://www.mauroalexandre.com.br',
   siteName: 'MauroAlexandre',
   title: 'MauroAlexandre — Cursos de Redes: TR-069, BGP e Informática para Concursos',
   description:

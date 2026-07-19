@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coursespace-landing-page-beryl.vercel.app/sitemap.xml
+Sitemap: https://www.mauroalexandre.com.br/sitemap.xml
